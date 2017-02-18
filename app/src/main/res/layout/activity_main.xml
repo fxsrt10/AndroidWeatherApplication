@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="sample.optech.weatherapp.MainActivity"
+    android:background="#ff1ba1ee"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    >
+
+    <TextView
+        android:id= "@+id/cityText"
+        android:textColor="#fff"
+        android:text="Houston, TX"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
+    <TextView
+        android:id= "@+id/windCatText"
+        android:textColor="#fff"
+        android:text="Wind"
+        android:textSize="18sp"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="36dp"
+        android:layout_below="@+id/thumbnailIcon"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/tempText"
+        android:text="12&#xb0;"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:textStyle="normal"
+        android:layout_below="@+id/cityText"
+        android:layout_marginTop="35dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="45sp"/>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:text="Cloud"
+        android:id="@+id/cloudText"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/windCatText"
+        android:textColor="#fff"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/humidityText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Humidity"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/cloudText"
+        android:textColor="#fff"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pressure"
+        android:id="@+id/pressureText"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/humidityText"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sunrise"
+        android:id="@+id/sunriseText"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/pressureText"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sunset"
+        android:id="@+id/sunsetText"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/sunriseText"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        />
+
+    <ImageView
+        android:id="@+id/thumbnailIcon"
+        android:background="#fff"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/cityText"
+        android:layout_alignStart="@+id/cityText" />
+
+    <TextView
+        android:id= "@+id/lastUpdatedText"
+        android:textColor="#fff"
+        android:text="Last Updated"
+        android:textSize="10sp"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/cloudText" />
+
+</RelativeLayout>
