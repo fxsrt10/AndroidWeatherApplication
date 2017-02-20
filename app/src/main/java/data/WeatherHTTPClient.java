@@ -22,7 +22,8 @@ public class WeatherHTTPClient {
 
         try {
             //Set Connections Params
-            connection = (HttpURLConnection) (new URL(Utils.BASE_URL + place)).openConnection();
+            System.out.print(Utils.BASE_URL + place + "&appid=a8c1f7fd2c771acd1e0511141d12b2d4" + "&units=metric");
+            connection = (HttpURLConnection) (new URL(Utils.BASE_URL + place + "&appid=a8c1f7fd2c771acd1e0511141d12b2d4" + "&units=imperial")).openConnection();
             connection.setRequestMethod("GET");
             connection.setDoInput(true);
             connection.setDoOutput(true);

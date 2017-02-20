@@ -11,7 +11,7 @@ public class CurrentCondition {
     private String icon;
     private float  pressure;
     private float humidity;
-    private float maxtemp;
+    private float maxTemp;
     private float minTemp;
     private double temperature;
 
@@ -63,12 +63,12 @@ public class CurrentCondition {
         this.humidity = humidity;
     }
 
-    public float getMaxtemp() {
-        return maxtemp;
+    public float getMaxTemp() {
+        return maxTemp;
     }
 
-    public void setMaxtemp(float maxtemp) {
-        this.maxtemp = maxtemp;
+    public void setMaxTemp(float maxTemp) {
+        this.maxTemp = maxTemp;
     }
 
     public float getMinTemp() {

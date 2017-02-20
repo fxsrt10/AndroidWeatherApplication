@@ -1,5 +1,7 @@
 package sample.optech.weatherapp;
 
+import android.icu.text.DateFormat;
+import android.icu.text.DecimalFormat;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
+
+import java.util.Date;
 
 import data.JSONWeatherParser;
 import data.WeatherHTTPClient;
@@ -30,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView sunset;
     private TextView sunrise;
     private TextView updated;
+    private TextView description;
 
     Weather weather = new Weather();
 
@@ -47,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         sunset = (TextView) findViewById(R.id.sunsetText);
         sunrise = (TextView) findViewById(R.id.sunriseText);
         updated = (TextView) findViewById(R.id.lastUpdatedText);
+//        description = (TextView) findViewById(R.id.description);
 
         renderWeatherData("Houston,US");
 
@@ -61,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void renderWeatherData(String city) {
         WeatherTask weatherTask = new WeatherTask();
-        weatherTask.execute(new String[]{city + "&unitsmetric"});
+        weatherTask.execute(new String[]{city});
 
     }
 
@@ -73,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
             weather = JSONWeatherParser.getWeather(data);
 
-            Log.v("Data :", weather.currentCondition.getDescription());
+            Log.v("Data :", weather.place.getCity());
 
             return weather;
         }
@@ -81,6 +87,27 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Weather weather) {
             super.onPostExecute(weather);
+
+            DateFormat df = DateFormat.getDateTimeInstance();
+
+            String sunriseData = df.format(new Date(weather.place.getSunrise()));
+            String sunsetData = df.format(new Date(weather.place.getSunset()));
+            String updateData = df.format(new Date(weather.place.getLastUpdate()));
+
+            DecimalFormat decimalFormat = new DecimalFormat("#.#");
+            String tempFormat = decimalFormat.format(weather.currentCondition.getTemperature());
+
+            cityName.setText(weather.place.getCity() + ", " + weather.place.getCountry());
+            humidity.setText("Humidity: " + String.valueOf(weather.currentCondition.getHumidity()) + "%");
+            temp.setText(" "+ tempFormat + "C");
+            pressure.setText("Pressure: " + weather.currentCondition.getPressure() + "psi");
+            wind.setText("Wind: " + weather.wind.getSpeed() + "mph");
+            sunrise.setText("Sunrise: " + sunriseData);
+            sunset.setText("Sunset: " + sunsetData);
+            updated.setText("Last Updated: " + updateData);
+//            description.setText(weather.currentCondition.getDescription());
+
+
         }
     }
 
